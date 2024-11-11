@@ -66,10 +66,14 @@ def create_custom_colormap(base_color):
 
 @app.route('/')
 def generate_image():
-    screen_width, screen_height = 1920, 1080
+    # Get width and height from query parameters, with defaults if not provided
+    width = int(request.args.get('width', 1920))
+    height = int(request.args.get('height', 1080))
+    
+    # Define roughness, contour levels, and size for topography generation (adjust as needed)
     roughness = random.uniform(0.5, 1.5)
     contour_levels = random.randint(10, 50)
-    size = int(np.log2(max(screen_width, screen_height))) - 1
+    size = int(np.log2(max(width, height))) - 1
 
     # Generate the topography
     topography = diamond_square(size, roughness)
@@ -77,7 +81,7 @@ def generate_image():
     custom_cmap = create_custom_colormap(base_color)
 
     # Plot the topography with the custom color map
-    fig, ax = plt.subplots(figsize=(screen_width / 100, screen_height / 100), dpi=100)
+    fig, ax = plt.subplots(figsize=(width / 100, height / 100), dpi=100)
     ax.contourf(topography, levels=contour_levels, cmap=custom_cmap)
     ax.axis('off')
 
