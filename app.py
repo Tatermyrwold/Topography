@@ -64,7 +64,7 @@ def create_custom_colormap(base_color):
     ]
     return LinearSegmentedColormap.from_list("custom_topography", colors, N=256)
 
-@app.route('/generate-image')
+@app.route('/')
 def generate_image():
     screen_width, screen_height = 1920, 1080
     roughness = random.uniform(0.5, 1.5)
