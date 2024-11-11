@@ -1,4 +1,4 @@
-from flask import Flask, send_file, requests
+from flask import Flask, send_file, request
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
