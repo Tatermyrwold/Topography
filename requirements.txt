@@ -2,4 +2,4 @@ Flask
 numpy
 matplotlib
 screeninfo
-requests
+request
